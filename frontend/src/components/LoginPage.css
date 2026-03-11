@@ -1,0 +1,211 @@
+/* Full page background */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.auth-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  background-image: url('./home-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(15, 23, 42, 0.5) 0%, rgba(15, 23, 42, 0.8) 100%);
+  backdrop-filter: blur(8px);
+  z-index: 1;
+}
+
+.auth-wrapper > * {
+  position: relative;
+  z-index: 2;
+}
+
+.brand-header {
+  font-size: 3.5rem;
+  color: white;
+  margin-bottom: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.brand-header span {
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Card container */
+.login-container {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 3rem;
+  border-radius: 1.5rem;
+  width: 100%;
+  max-width: 450px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Form Layout Classes */
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-label {
+  flex: 0 0 140px;
+  /* Fixed width for alignment */
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 0;
+}
+
+.form-input-box {
+  flex: 1;
+}
+
+.form-row input[type="text"],
+.form-row input[type="email"],
+.form-row input[type="password"],
+.form-row input[type="date"] {
+  margin: 0 !important;
+  /* Overriding default input margins */
+}
+
+/* Heading */
+.login-container h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text-main);
+}
+
+/* Inputs */
+.login-container input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
+  transition: var(--transition);
+  color: var(--text-main);
+}
+
+.login-container input:focus {
+  outline: none;
+  background: white;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Radio group */
+.radio-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 10px 0;
+}
+
+/* Buttons */
+.login-container button:not(.signup-link) {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
+}
+
+.login-container button:not(.signup-link):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.5);
+}
+
+/* Signup Footer */
+.signup-footer {
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.signup-link {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.signup-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 25px;
+    width: 90%;
+  }
+
+  .radio-group {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 2rem;
+    width: calc(100% - 2rem);
+    margin: 1rem;
+  }
+
+  .radio-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
