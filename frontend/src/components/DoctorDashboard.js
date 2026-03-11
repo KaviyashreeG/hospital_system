@@ -76,7 +76,7 @@ function DoctorDashboard() {
     <div className="dashboard-layout">
       {/* Sidebar */}
       <aside className="sidebar">
-        <div className="sidebar-logo">Medi<span>Core</span><br /><small style={{fontSize: '0.65em', opacity: 0.7, fontWeight: 400}}>Doctor Panel</small></div>
+        <div className="sidebar-logo">med_<span>flow</span><br /><small style={{fontSize: '0.65em', opacity: 0.7, fontWeight: 400}}>Doctor Panel</small></div>
         <nav className="sidebar-nav">
           {[
             { key: "appointments", icon: "📋", label: "Appointments" },

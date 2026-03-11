@@ -66,7 +66,7 @@ function LoginPage() {
 
   return (
     <div className="auth-wrapper">
-      <h1 className="brand-header">Medi<span>Core</span></h1>
+      <h1 className="brand-header">med_<span>flow</span></h1>
       <div className="login-container">
         <h2 style={{ marginBottom: "25px" }}>Sign In</h2>
 

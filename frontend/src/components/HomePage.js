@@ -22,7 +22,7 @@ function HomePage() {
               <rect x="25" y="42" width="50" height="16" rx="8" fill="white" />
             </svg>
           </div>
-          <h1 className="home-brand">Medi<span>Core</span></h1>
+          <h1 className="home-brand">med_<span>flow</span></h1>
           <p className="home-tagline">Healthcare Management System</p>
 
           <div className="home-actions">
