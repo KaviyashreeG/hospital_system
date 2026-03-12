@@ -7,8 +7,12 @@ import com.hospitalmanagement.app.entity.Department;
 import com.hospitalmanagement.app.entity.User;
 import com.hospitalmanagement.app.repository.DepartmentRepository;
 import com.hospitalmanagement.app.repository.UserRepository;
+import com.hospitalmanagement.app.security.JwtUtil;
 import com.hospitalmanagement.app.service.AuthService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
@@ -20,6 +24,8 @@ public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
     private final DepartmentRepository departmentRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtUtil jwtUtil;
+    private final AuthenticationManager authenticationManager;
 
     @Override
     public String register(RegisterRequestDTO request) {
@@ -59,20 +65,22 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public UserResponseDTO login(LoginRequestDTO request) {
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+        );
 
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException("Invalid Email"));
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
-        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            throw new RuntimeException("Invalid Password");
-        }
+        String jwtToken = jwtUtil.generateToken(user);
 
         return new UserResponseDTO(
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
                 user.getRole(),
-                user.getSpecialization()
+                user.getSpecialization(),
+                jwtToken
         );
     }
 }

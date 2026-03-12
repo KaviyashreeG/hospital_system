@@ -244,43 +244,38 @@ function PatientDashboard() {
                 </div>
 
                 {/* Step 2: Doctor */}
-                {bookForm.specialization && doctors.length === 0 && (
-                  <p style={{ color: "var(--text-muted)", fontSize: "0.88rem" }}>
-                    No doctors available for this specialization.
-                  </p>
-                )}
-                {doctors.length > 0 && (
-                  <div className="form-group">
-                    <label>Doctor</label>
-                    <select required value={bookForm.doctorId} onChange={handleDoctorChange}>
-                      <option value="">— Select Doctor —</option>
-                      {doctors.map(d => (
-                        <option key={d.id} value={d.id}>Dr. {d.name}</option>
-                      ))}
-                    </select>
-                  </div>
-                )}
+                <div className="form-group">
+                  <label>Doctor</label>
+                  <select required value={bookForm.doctorId} onChange={handleDoctorChange}>
+                    <option value="">— Select Doctor —</option>
+                    {doctors.map(d => (
+                      <option key={d.id} value={d.id}>Dr. {d.name}</option>
+                    ))}
+                  </select>
+                  {bookForm.specialization && doctors.length === 0 && (
+                    <p style={{ color: "#ef4444", fontSize: "0.75rem", marginTop: "4px" }}>
+                      No doctors available for this specialization.
+                    </p>
+                  )}
+                </div>
 
                 {/* Step 3: Available Slot */}
-                {slots.length > 0 && (
-                  <div className="form-group">
-                    <label>Available Slot</label>
-                    <select required value={bookForm.slotId} onChange={handleSlotChange}>
-                      <option value="">— Select Slot —</option>
-                      {slots.map(s => (
-                        <option key={s.id} value={s.id}>
-                          {s.date} | {s.startTime} – {s.endTime}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                )}
-
-                {bookForm.doctorId && slots.length === 0 && (
-                  <p style={{ color: "var(--text-muted)", fontSize: "0.88rem" }}>
-                    No available slots for this doctor.
-                  </p>
-                )}
+                <div className="form-group">
+                  <label>Available Slot</label>
+                  <select required value={bookForm.slotId} onChange={handleSlotChange}>
+                    <option value="">— Select Slot —</option>
+                    {slots.map(s => (
+                      <option key={s.id} value={s.id}>
+                        {s.date} | {s.startTime} – {s.endTime}
+                      </option>
+                    ))}
+                  </select>
+                  {bookForm.doctorId && slots.length === 0 && (
+                    <p style={{ color: "#ef4444", fontSize: "0.75rem", marginTop: "4px" }}>
+                      No available slots for this doctor.
+                    </p>
+                  )}
+                </div>
               </div>
 
               <div className="modal-actions">
