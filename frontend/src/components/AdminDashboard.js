@@ -131,23 +131,23 @@ function AdminDashboard() {
 
       {/* Main */}
       <main className="main-content">
-        {alert && <div className={`alert alert-${alert.type}`}>{alert.msg}</div>}
+        {alert && <div className={`alert alert-${alert.type} animate-in`}>{alert.msg}</div>}
 
         {/* OVERVIEW */}
         {activeTab === "overview" && (
           <>
-            <div className="page-header">
+            <div className="page-header animate-up">
               <h1>Dashboard Overview</h1>
-              <p>Hospital at a glance</p>
+              <p>Hospital management at a glance</p>
             </div>
-            <div className="stats-row" style={{ gridTemplateColumns: "repeat(5, 1fr)" }}>
+            <div className="stats-row animate-up" style={{ gridTemplateColumns: "repeat(5, 1fr)", animationDelay: '100ms' }}>
               <div className="stat-card">
                 <div className="stat-icon blue">👨‍⚕️</div>
                 <div className="stat-info"><p>Doctors</p><h3>{doctors.length}</h3></div>
               </div>
               <div className="stat-card">
                 <div className="stat-icon indigo">📋</div>
-                <div className="stat-info"><p>Total Appointments</p><h3>{appointments.length}</h3></div>
+                <div className="stat-info"><p>Total</p><h3>{appointments.length}</h3></div>
               </div>
               <div className="stat-card">
                 <div className="stat-icon amber">⏳</div>
@@ -164,7 +164,7 @@ function AdminDashboard() {
             </div>
 
             {/* Recent appointments */}
-            <div className="card">
+            <div className="card animate-up" style={{ animationDelay: '200ms' }}>
               <div className="card-header"><h3>Recent Appointments</h3></div>
               <div className="card-body">
                 <AppointmentTable
@@ -180,11 +180,11 @@ function AdminDashboard() {
         {/* APPOINTMENTS */}
         {activeTab === "appointments" && (
           <>
-            <div className="page-header">
+            <div className="page-header animate-up">
               <h1>All Appointments</h1>
               <p>Manage and cancel scheduled appointments</p>
             </div>
-            <div className="card">
+            <div className="card animate-up" style={{ animationDelay: '100ms' }}>
               <div className="card-body">
                 <AppointmentTable
                   appointments={appointments}
@@ -199,15 +199,15 @@ function AdminDashboard() {
         {/* DOCTORS */}
         {activeTab === "doctors" && (
           <>
-            <div className="page-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+            <div className="page-header animate-up" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
               <div>
                 <h1>Doctors</h1>
                 <p>Manage hospital doctors</p>
               </div>
               <button className="btn btn-primary" onClick={() => setShowAddDoctor(true)}>+ Add Doctor</button>
             </div>
-            <div className="card">
-              <div className="card-body table-wrap">
+            <div className="card animate-up" style={{ animationDelay: '100ms' }}>
+              <div className="card-body table-wrap" style={{ margin: 0, padding: 0 }}>
                 {doctors.length === 0 ? (
                   <div className="empty-state"><div className="empty-icon">👨‍⚕️</div><p>No doctors yet.</p></div>
                 ) : (

@@ -68,7 +68,7 @@ function LoginPage() {
   return (
     <div className="auth-wrapper">
       <h1 className="brand-header">med_<span>flow</span></h1>
-      <div className="login-container">
+      <div className="login-container animate-in">
         <h2 style={{ marginBottom: "25px" }}>Sign In</h2>
 
         <input

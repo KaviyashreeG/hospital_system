@@ -78,8 +78,8 @@ function SignupPage() {
 
   return (
     <div className="auth-wrapper">
-      <h1 className="brand-header">Medi<span>Core</span></h1>
-      <div className="login-container signup-container">
+      <h1 className="brand-header">med_<span>flow</span></h1>
+      <div className="login-container signup-container animate-in">
         <h2>Patient Signup</h2>
 
         <div className="form-row">

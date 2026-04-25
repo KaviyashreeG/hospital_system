@@ -100,17 +100,17 @@ function DoctorDashboard() {
 
       {/* Main */}
       <main className="main-content">
-        {alert && <div className={`alert alert-${alert.type}`}>{alert.msg}</div>}
+        {alert && <div className={`alert alert-${alert.type} animate-in`}>{alert.msg}</div>}
 
         {/* APPOINTMENTS */}
         {activeTab === "appointments" && (
           <>
-            <div className="page-header">
+            <div className="page-header animate-up">
               <h1>My Appointments</h1>
               <p>Review and confirm patient bookings</p>
             </div>
 
-            <div className="stats-row">
+            <div className="stats-row animate-up" style={{ animationDelay: '100ms' }}>
               <div className="stat-card">
                 <div className="stat-icon amber">⏳</div>
                 <div className="stat-info"><p>Pending</p><h3>{booked}</h3></div>
@@ -125,7 +125,7 @@ function DoctorDashboard() {
               </div>
             </div>
 
-            <div className="card">
+            <div className="card animate-up" style={{ animationDelay: '200ms' }}>
               <div className="card-header"><h3>Appointment Requests</h3></div>
               <div className="card-body">
                 {appointments.length === 0 ? (
@@ -171,11 +171,11 @@ function DoctorDashboard() {
         {/* SLOTS */}
         {activeTab === "slots" && (
           <>
-            <div className="page-header">
+            <div className="page-header animate-up">
               <h1>My Available Slots</h1>
               <p>Add time slots patients can book</p>
             </div>
-            <div className="card" style={{ maxWidth: 480 }}>
+            <div className="card animate-up" style={{ maxWidth: 480, animationDelay: '100ms' }}>
               <div className="card-header"><h3>Add New Slot</h3></div>
               <div className="card-body">
                 <form onSubmit={handleAddSlot}>
